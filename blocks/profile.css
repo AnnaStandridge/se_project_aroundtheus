@@ -26,6 +26,9 @@
   font-weight: 500;
   grid-area: "title";
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -40,6 +43,7 @@
 .profile__edit-button:hover {
   background: transparent url(../images/edit-hover.svg) center no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
 }
 
 .profile__description {
@@ -48,6 +52,9 @@
   font-weight: 400;
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__add-button {
@@ -56,11 +63,13 @@
   width: 150px;
   margin-left: auto;
   border: solid 2px white;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
   background: transparent url(../images/add-hover.svg) center no-repeat;
   border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
