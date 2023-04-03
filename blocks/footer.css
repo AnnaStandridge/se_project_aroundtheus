@@ -1,0 +1,11 @@
+.footer {
+  padding-top: 67px;
+  padding-bottom: 60px;
+}
+
+.footer__copyright {
+  font-family: "Inter";
+  color: #545454;
+  font-size: 18px;
+  line-height: 1.1;
+}
