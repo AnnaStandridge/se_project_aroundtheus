@@ -62,3 +62,43 @@
   background: transparent url(../images/add-hover.svg) center no-repeat;
   border: 2px solid rgba(255, 255, 255, 0.6);
 }
+
+@media screen and (max-width: 800px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__image {
+    margin: 0;
+  }
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding-top: 26px;
+  }
+
+  .profile__title {
+    font-size: 22px;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding-bottom: 36px;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    margin: 0;
+    align-self: center;
+  }
+
+  .profile__add-button {
+    margin: 0;
+    width: 100%;
+  }
+}
