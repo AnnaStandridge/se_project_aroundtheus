@@ -29,13 +29,20 @@
   position: absolute;
   top: -45px;
   right: -45px;
-  background-image: url(../images/Close\ Icon.svg);
-  background-repeat: no-repeat;
+  background: url(../images/Close\ Icon.svg) no-repeat;
   background-size: contain;
   width: 40px;
   height: 40px;
   border: none;
   background-color: transparent;
+}
+
+.modal__close:hover {
+  background: transparent url(../images/Close\ Icon\ Hover.svg) no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
 
 .modal__heading {
