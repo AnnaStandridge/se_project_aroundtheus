@@ -49,12 +49,9 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardAltEl = cardElement.querySelector(".card__image");
-  const cardLinkEl = cardElement.querySelector(".card__image");
   cardTitleEl.textContent = cardData.name;
-  cardAltEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
-  cardLinkEl.src = cardData.link;
+  cardImageEl.alt = cardTitleEl.textContent;
   return cardElement;
 }
 
@@ -66,12 +63,14 @@ function handleProfileEditSubmit(e) {
   closePopUp();
 }
 
-/*Event Listeners*/
-profileEditButton.addEventListener("click", () => {
+function handleProfileEditOpen(e) {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal_opened");
-});
+}
+
+/*Event Listeners*/
+profileEditButton.addEventListener("click", handleProfileEditOpen);
 
 profileEditClose.addEventListener("click", closePopUp);
 
