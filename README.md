@@ -2,7 +2,7 @@
 
 **Intro**
 
-Project 3 is made using HTML and CSS and based off of a Figma design. This website is meant to be reactive and display effectively on different viewports.
+Project 3 is made using HTML and CSS and based off of a Figma design. This website is meant to be reactive and display effectively on different viewports. Utilizing Javascript for functionality.
 
 **GitHub Link**
 
