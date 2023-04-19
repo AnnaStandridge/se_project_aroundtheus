@@ -29,17 +29,16 @@
   position: absolute;
   top: -45px;
   right: -45px;
-  background: url(../images/Close\ Icon.svg) no-repeat;
+  background: transparent url(../images/Close\ Icon.svg) no-repeat;
   background-size: contain;
   width: 40px;
   height: 40px;
   border: none;
-  background-color: transparent;
+  transition: opacity 1s;
 }
 
 .modal__close:hover {
-  background: transparent url(../images/Close\ Icon\ Hover.svg) no-repeat;
-  background-size: contain;
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -83,10 +82,12 @@
   line-height: 22px;
   padding: 0;
   margin-top: 28px;
+  transition: opacity 1s;
 }
 
 .modal__button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 620px) {
@@ -107,14 +108,16 @@
     min-height: 272px;
   }
 
-  .modal__form_input {
+  .modal__form {
     min-width: 238px;
+  }
+
+  .modal__form_input {
     margin-bottom: 15px;
   }
 
   .modal__button {
     min-height: 46px;
-    min-width: 238px;
     font-size: 14px;
     line-height: 17px;
   }
