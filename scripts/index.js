@@ -84,9 +84,7 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     const modalImageEl = previewImageModal.querySelector(".modal__image");
-    const modalCaptionEl = previewImageModal.querySelector(
-      ".modal__image_caption"
-    );
+    const modalCaptionEl = previewImageModal.querySelector(".modal__caption");
     modalImageEl.src = cardData.link;
     modalCaptionEl.textContent = cardData.name;
     openModal(previewImageModal);
