@@ -117,6 +117,8 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
+  const inputEls = [...document.querySelectorAll(".modal__form-input")];
+  const submitButton = document.querySelector(".modal__button");
   renderCard({ name, link }, cardsWrap);
   addCardForm.reset();
   closeModal(addCardModal);

@@ -85,7 +85,7 @@
   min-width: 358px;
 }
 
-.modal__form_input {
+.modal__form-input {
   min-height: 40px;
   width: 100%;
   margin-bottom: 17px;
@@ -168,7 +168,7 @@
     min-width: 238px;
   }
 
-  .modal__form_input {
+  .modal__form-input {
     margin-bottom: 15px;
   }
 
