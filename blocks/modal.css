@@ -98,7 +98,7 @@
   line-height: 17px;
 }
 
-.modal__input_type_error {
+.modal__error {
   visibility: visible;
   border-bottom: 1px solid rgba(255, 0, 0);
 }

@@ -62,7 +62,7 @@ const options = {
   inputSelector: ".modal__form_input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__type_error",
+  inputErrorClass: "modal__error",
   errorClass: "modal__error_visible",
 };
 
