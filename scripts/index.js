@@ -58,10 +58,12 @@ const addNewCard = document.querySelector(".profile__add-button");
 /* Functions*/
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalWithEsc);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalWithEsc);
 }
 
 function renderCard(cardData, wrapper) {
@@ -97,6 +99,12 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function closeModalOnRemoteClick(e) {
+  if (e.target.classList.contains("modal_opened")) {
+    closeModal(e.target);
+  }
+}
+
 /*Handlers*/
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -112,7 +120,15 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link }, cardsWrap);
   addCardForm.reset();
   closeModal(addCardModal);
+  toggleButtonState(inputEls, submitButton, options);
 }
+
+const closeModalWithEsc = (e) => {
+  if (e.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
+};
 
 /*Event Listeners*/
 profileEditButton.addEventListener("click", () => {
@@ -130,5 +146,9 @@ addCardForm.addEventListener("submit", handleAddCardSubmit);
 previewImageClose.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
+
+profileEditModal.addEventListener("mousedown", closeModalOnRemoteClick);
+addCardModal.addEventListener("mousedown", closeModalOnRemoteClick);
+previewImageModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));

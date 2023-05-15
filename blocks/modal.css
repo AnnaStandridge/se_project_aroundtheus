@@ -98,6 +98,22 @@
   line-height: 17px;
 }
 
+.modal__input_type_error {
+  visibility: visible;
+  border-bottom: 1px solid rgba(255, 0, 0);
+}
+
+.modal__error_visible {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  color: red;
+  padding-top: 5px;
+  border: none;
+  width: 100%;
+}
+
 .modal__button {
   border-radius: 2px;
   border: none;
@@ -110,6 +126,19 @@
   padding: 0;
   margin-top: 28px;
   transition: opacity 1s;
+}
+
+.modal__button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal__button_disabled {
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: white;
+  color: #000;
+  opacity: 0.2;
 }
 
 .modal__button:hover {
