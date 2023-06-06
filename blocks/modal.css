@@ -15,7 +15,6 @@
 }
 
 .modal_opened {
-  display: flex;
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity 0.3s linear;
@@ -139,11 +138,6 @@
   background-color: white;
   color: #000;
   opacity: 0.2;
-}
-
-.modal__button:hover {
-  cursor: pointer;
-  opacity: 0.8;
 }
 
 @media screen and (max-width: 620px) {
