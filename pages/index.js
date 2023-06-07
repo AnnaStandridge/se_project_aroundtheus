@@ -94,7 +94,7 @@ function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   profileEditForm.reset();
-  editFormValidator._disableButton();
+  editFormValidator.disableButton();
   closeModal(profileEditModal);
 }
 
@@ -104,7 +104,7 @@ function handleAddCardSubmit(e) {
   const newCard = renderCard(cardData);
   cardList.prepend(newCard);
   addCardForm.reset();
-  addCardValidator._disableButton();
+  addCardValidator.disableButton();
   closeModal(addCardModal);
 }
 
