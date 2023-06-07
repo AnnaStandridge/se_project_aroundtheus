@@ -58,6 +58,6 @@
 }
 
 .card__like-button:hover {
-  background: transparent url(../images/like-hover.svg) center no-repeat;
+  opacity: 0.6;
   cursor: pointer;
 }
