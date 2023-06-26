@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(options, formElement) {
     this._inputSelector = options.inputSelector;
     this._submitButtonSelector = options.submitButtonSelector;
@@ -24,7 +24,7 @@ class FormValidator {
     errorMessageEl.classList.remove(this._errorClass);
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this.disableButton();
     } else {
@@ -58,10 +58,10 @@ class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", () => {
         this._checkInputValidity(inputEl);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
-    this._toggleButtonState();
+    this.toggleButtonState();
   }
 
   enableValidation() {
@@ -72,5 +72,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-export default FormValidator;
