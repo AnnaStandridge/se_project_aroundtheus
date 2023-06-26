@@ -14,20 +14,20 @@ export default class Popup {
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  _handleEscClose(e) {
+  _handleEscClose = (e) => {
     if (e.key === "Escape") {
       this.close();
     }
-  }
+  };
 
-  _closeModalOnClick(e) {
+  _closeModalOnClick = (e) => {
     if (
       e.target.classList.contains("modal_opened") ||
-      e.target.classList.contains(".modal__close")
+      e.target.classList.contains("modal__close")
     ) {
       this.close();
     }
-  }
+  };
 
   setEventListeners() {
     document.addEventListener("keydown", this._handleEscClose);

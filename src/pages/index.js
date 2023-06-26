@@ -63,10 +63,12 @@ function openEditProfileModal() {
   editProfileModal.open();
 }
 
-const newCardModal = new PopupWithForm({
-  popupSelector: addCardModal,
-  handleFormSubmit: submitCard,
-});
+const newCardModal = new PopupWithForm(
+  {
+    popupSelector: addCardModal,
+  },
+  submitCard
+);
 const imageModal = new PopupWithImage({ popupSelector: previewImageModal });
 
 /*Functions*/
