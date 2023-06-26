@@ -1,3 +1,5 @@
+import "./index.css";
+
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -45,9 +47,12 @@ cardListSection.renderItems();
 /*Form Data*/
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
-const editProfileModal = new PopupWithForm(profileEditModal, (inputObj) => {
-  userInfo.setUserInfo(inputObj.title, inputObj.description);
-  editProfileModal.close();
+const editProfileModal = new PopupWithForm({
+  popupSelector: profileEditModal,
+  handleFormSubmit: (inputObj) => {
+    userInfo.setUserInfo(inputObj.title, inputObj.description);
+    editProfileModal.close();
+  },
 });
 
 function openEditProfileModal() {
@@ -58,8 +63,11 @@ function openEditProfileModal() {
   editProfileModal.open();
 }
 
-const newCardModal = new PopupWithForm(addCardModal, submitCard);
-const imageModal = new PopupWithImage(previewImageModal);
+const newCardModal = new PopupWithForm({
+  popupSelector: addCardModal,
+  handleFormSubmit: submitCard,
+});
+const imageModal = new PopupWithImage({ popupSelector: previewImageModal });
 
 /*Functions*/
 function createCard({ name, link }) {
