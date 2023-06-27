@@ -48,7 +48,7 @@ cardListSection.renderItems();
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
 const editProfileModal = new PopupWithForm({
-  popupSelector: profileEditModal,
+  popupSelector: "#profile-edit-modal",
   handleFormSubmit: (inputObj) => {
     userInfo.setUserInfo(inputObj.title, inputObj.description);
     editProfileModal.close();
@@ -64,10 +64,13 @@ function openEditProfileModal() {
 }
 
 const newCardModal = new PopupWithForm({
-  popupSelector: addCardModal,
+  popupSelector: "#add-card-modal",
   handleFormSubmit: submitCard,
 });
-const imageModal = new PopupWithImage({ popupSelector: previewImageModal });
+
+const imageModal = new PopupWithImage({
+  popupSelector: "#preview-image-modal",
+});
 
 /*Functions*/
 function createCard({ name, link }) {
@@ -85,7 +88,7 @@ function submitCard({ title, url }) {
   console.log("Submit event works!");
   const newCardData = { name: title, link: url };
   const newCard = createCard(newCardData);
-  cardListSection.prependItem(newCard);
+  cardListSection.addItem(newCard);
   newCardModal.close();
 }
 
