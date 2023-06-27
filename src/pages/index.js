@@ -63,12 +63,10 @@ function openEditProfileModal() {
   editProfileModal.open();
 }
 
-const newCardModal = new PopupWithForm(
-  {
-    popupSelector: addCardModal,
-  },
-  submitCard
-);
+const newCardModal = new PopupWithForm({
+  popupSelector: addCardModal,
+  handleFormSubmit: submitCard,
+});
 const imageModal = new PopupWithImage({ popupSelector: previewImageModal });
 
 /*Functions*/
@@ -84,6 +82,7 @@ function createCard({ name, link }) {
 }
 
 function submitCard({ title, url }) {
+  console.log("Submit event works!");
   const newCardData = { name: title, link: url };
   const newCard = createCard(newCardData);
   cardListSection.prependItem(newCard);
