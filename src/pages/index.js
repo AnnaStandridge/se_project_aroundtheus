@@ -85,7 +85,6 @@ function createCard({ name, link }) {
 }
 
 function submitCard({ title, url }) {
-  console.log("Submit event works!");
   const newCardData = { name: title, link: url };
   const newCard = createCard(newCardData);
   cardListSection.addItem(newCard);
