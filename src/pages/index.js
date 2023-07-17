@@ -8,10 +8,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import {
   profileEditButton,
-  profileEditModal,
   addCardButton,
-  addCardModal,
-  previewImageModal,
   profileTitle,
   profileDescription,
   profileEditForm,
@@ -20,9 +17,8 @@ import {
   profileDescriptionInput,
   options,
   profileAvatarEditButton,
-  profileAvatarEditModal,
   profileAvatarEditForm,
-  deleteCardModal,
+  profileAvatar,
   deleteCardForm,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
@@ -37,17 +33,23 @@ const api = new Api({
 });
 
 /*Constants*/
-const editProfileModal = new PopupWithForm(
-  profileEditModal,
-  handleProfileEditSubmit
-);
-const imagePreviewModal = new PopupWithImage(previewImageModal);
-const newCardModal = new PopupWithForm(addCardModal, handleCardSubmit);
-const cardDeleteModal = new PopupWithConfirm(deleteCardModal);
-const avatarEditModal = new PopupWithForm(
-  profileAvatarEditModal,
-  handleProfileAvatarSubmit
-);
+const editProfileModal = new PopupWithForm({
+  popupSelector: "#profile-edit-modal", handleProfileEditSubmit,
+});
+const imagePreviewModal = new PopupWithImage({
+  popupSelector: "#preview-image-modal",
+});
+const newCardModal = new PopupWithForm({
+  popupSelector: "#add-card-modal",
+  handleFormSubmit: handleCardSubmit,
+});
+const cardDeleteModal = new PopupWithForm({
+  popupSelector: "#delete-card-modal",
+});
+const avatarEditModal = new PopupWithForm({
+  popupSelector: "#edit-avatar-modal",
+  handleFormSubmit: handleProfileAvatarSubmit,
+});
 
 /*Validation*/
 const editFormValidator = new FormValidator(options, profileEditForm);
