@@ -41,6 +41,15 @@ export const profileTitleInput = document.querySelector("#profile-title-input");
 export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+export const profileAvatarEditButton = document.querySelector(
+  ".profile__image-edit-button"
+);
+export const profileAvatarEditModal =
+  document.querySelector("#edit-avatar-modal");
+export const profileAvatarEditForm =
+  profileAvatarEditModal.querySelector(".modal__form");
+export const deleteCardModal = document.querySelector("#delete-card-modal");
+export const deleteCardForm = deleteCardModal.querySelector(".modal__form");
 
 /*Wrappers*/
 export const cardList = document.querySelector(".cards__list");

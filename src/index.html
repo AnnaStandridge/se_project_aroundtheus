@@ -22,11 +22,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__image_container">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Avatar"
+              class="profile__image"
+            />
+            <button class="profile__image-edit-button" type="button"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
             <button
@@ -34,7 +37,9 @@
               id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__description" id="profile-description">Explorer</p>
+            <p class="profile__description" id="profile-description">
+              Explorer
+            </p>
           </div>
           <button
             class="profile__add-button"
@@ -121,7 +126,27 @@
         <button class="modal__close" type="button"></button>
         <img src="#" class="modal__image" alt="" />
         <h2 class="modal__caption"></h2>
-      </div> 
+      </div>
+    </div>
+    <!---Delete card modal-->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <form class="modal__form" no validate>
+          <button class="modal__close" type="button"></button>
+          <h3 class="modal__heading">Are you sure?</h3>
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+    <!---Edit profile photo-->
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container">
+        <form class="modal__form" novalidate>
+          <button class="modal__close" type="button"></button>
+          <h3 class="modal__heading">Change profile picture</h3>
+          <button class="modal__button" type="submit">Save</button>
+        </form>
+      </div>
     </div>
 
     <template id="card-template">
@@ -130,10 +155,12 @@
         <img src="" class="card__image" alt="" />
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
+          <div>
+            <button class="card__like-button" type="button"></button>
+            <span class="card__like-counter">0</span>
+          </div>
         </div>
       </li>
     </template>
-
   </body>
 </html>
