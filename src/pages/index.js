@@ -34,7 +34,8 @@ const api = new Api({
 
 /*Constants*/
 const editProfileModal = new PopupWithForm({
-  popupSelector: "#profile-edit-modal", handleProfileEditSubmit,
+  popupSelector: "#profile-edit-modal",
+  handleFormSubmit: handleProfileEditSubmit,
 });
 const imagePreviewModal = new PopupWithImage({
   popupSelector: "#preview-image-modal",
@@ -104,7 +105,7 @@ function openEditProfileModal() {
 function handleProfileEditSubmit({ name, description }) {
   editProfileModal.setLoading(true);
   api
-    .updateUserInfo(name, description)
+    .editUserInfo(name, description)
     .then(() => {
       userInfo.editUserInfo(name, description);
       editProfileModal.close();

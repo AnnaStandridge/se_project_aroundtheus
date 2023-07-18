@@ -51,6 +51,11 @@
   margin: 10px 0 0;
 }
 
+.modal__container_type_avatar {
+  min-width: 358px;
+  min-height: 200px;
+}
+
 .modal__close {
   position: absolute;
   top: -45px;
@@ -74,6 +79,7 @@
   line-height: 29px;
   color: #000;
   margin: 0 0 40px;
+  align-self: flex-start;
 }
 
 .modal__form {
