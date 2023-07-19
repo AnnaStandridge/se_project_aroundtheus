@@ -75,8 +75,8 @@ let cardListSection;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
     userId = userData._id;
-    userInfo.editUserInfo(userData.title, userData.description);
-    userInfo.editUserAvatar(userData.avatar);
+    userInfo.setUserInfo(userData.title, userData.description);
+    userInfo.setUserAvatar(userData.avatar);
     cardListSection = new Section(
       {
         items: initialCards,
@@ -107,7 +107,7 @@ function handleProfileEditSubmit({ title, description }) {
   api
     .editUserInfo(title, description)
     .then(() => {
-      userInfo.editUserInfo(title, description);
+      userInfo.setUserInfo(title, description);
       editProfileModal.close();
     })
     .catch((err) => {
@@ -118,7 +118,7 @@ function handleProfileEditSubmit({ title, description }) {
     });
 }
 
-function handleProfileAvatarSubmit(url) {
+function handleProfileAvatarSubmit({ url }) {
   avatarEditModal.setLoading(true);
   api
     .editUserAvatar(url)
