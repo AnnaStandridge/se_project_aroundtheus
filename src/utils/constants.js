@@ -51,8 +51,8 @@ export const profileAvatar = document.querySelector(".profile__image");
 const deleteCardModal = document.querySelector("#delete-card-modal");
 export const deleteCardForm = deleteCardModal.querySelector(".modal__form");
 
-/*Wrappers*/
 export const cardList = document.querySelector(".cards__list");
+export const cardTemplate = document.querySelector("#card-template");
 
 /*Validation*/
 export const options = {

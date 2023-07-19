@@ -20,6 +20,8 @@ import {
   profileAvatarEditForm,
   profileAvatar,
   deleteCardForm,
+  cardList,
+  cardTemplate,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 
@@ -75,8 +77,8 @@ let cardListSection;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
     userId = userData._id;
-    userInfo.setUserInfo(userData.title, userData.description);
-    userInfo.setUserAvatar(userData.avatar);
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setProfileAvatar(userData.avatar);
     cardListSection = new Section(
       {
         items: initialCards,
@@ -85,11 +87,11 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
           cardListSection.addItem(newCard);
         },
       },
-      cardListElement
+      cardList
     );
     cardListSection.renderItems();
   })
-  .catch(() => (err) => console.log(err));
+  .catch((err) => console.log(err));
 
 /*Profile Edit*/
 const userInfo = new UserInfo(profileTitle, profileDescription, profileAvatar);
@@ -191,9 +193,9 @@ function createCard(data) {
   const newCard = new Card(
     data,
     userId,
-    cardTemplateElement,
-    handleCardClick(),
-    handleDeleteCard(),
+    cardTemplate,
+    handleCardClick,
+    handleDeleteCard,
     handleLikeClick(data)
   );
   return newCard.generateCard();
