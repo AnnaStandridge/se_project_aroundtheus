@@ -3,6 +3,7 @@ import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
@@ -46,7 +47,7 @@ const newCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: handleCardSubmit,
 });
-const cardDeleteModal = new PopupWithForm({
+const cardDeleteModal = new PopupWithConfirm({
   popupSelector: "#delete-card-modal",
 });
 const avatarEditModal = new PopupWithForm({
@@ -82,8 +83,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     cardListSection = new Section(
       {
         items: initialCards,
-        renderer: (data) => {
-          const newCard = createCard(data);
+        renderer: ({ name, link, likes, _id, userId }) => {
+          const newCard = createCard({ name, link, likes, _id, userId });
           cardListSection.addItem(newCard);
         },
       },
@@ -125,7 +126,7 @@ function handleProfileAvatarSubmit({ url }) {
   api
     .editUserAvatar(url)
     .then((userData) => {
-      userInfo.editUserAvatar(userData.avatar);
+      userInfo.setProfileAvatar(userData.avatar);
       avatarEditModal.close();
     })
     .catch((err) => {
@@ -154,51 +155,43 @@ function handleCardSubmit({ title, url }) {
     });
 }
 
-function handleDeleteCard() {
-  cardDeleteModal.setSubmitAction(() => {
-    cardDeleteModal.setLoading(true);
-    api
-      .deleteCard(data._id)
-      .then((res) => {
-        newCard.remove(res._id);
-        cardDeleteModal.close();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        cardDeleteModal.setLoading(false, "Yes");
-      });
-  });
-}
-
-function handleLikeClick(data) {
-  api
-    .changeLikeCardStatus(data._id, newCard.isLiked())
-    .then((res) => {
-      const likes = res.likes || [];
-      newCard.setLikes(likes);
-      newCard.toggleLikes();
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
-function handleCardClick() {
-  imagePreviewModal.open(data);
-}
-
 function createCard(data) {
   const newCard = new Card(
     data,
     userId,
     cardTemplate,
-    handleCardClick,
-    handleDeleteCard,
-    handleLikeClick(data)
+    function handleCardClick(data) {
+      imagePreviewModal.open(data);
+    },
+    function handleDeleteClick() {
+      cardDeleteModal.setLoading(true);
+      api
+        .deleteCard(data._id)
+        .then((res) => {
+          newCard.remove(res._id);
+          cardDeleteModal.close();
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          cardDeleteModal.setLoading(false, "Yes");
+        });
+      cardDeleteModal.open(data._id);
+    },
+    function handleCardLike(data) {
+      api.changeLikeCardStatus(data._id, newCard.isLiked())
+      .then((res) => {
+        const likes = res.likes || [];
+        newCard.setLikes(likes);
+        newCard.toggleLikes();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }
   );
-  return newCard.generateCard();
+  return newCard.getView();
 }
 
 /*Event Listeners*/
