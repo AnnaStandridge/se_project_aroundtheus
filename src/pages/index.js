@@ -159,11 +159,12 @@ function createCard(data) {
   const newCard = new Card(
     data,
     userId,
-    cardTemplate,
+    "#card-template",
     function handleCardClick(data) {
       imagePreviewModal.open(data);
     },
     function handleDeleteClick() {
+      cardDeleteModal.setSubmitAction(() => {
       cardDeleteModal.setLoading(true);
       api
         .deleteCard(data._id)
@@ -177,13 +178,14 @@ function createCard(data) {
         .finally(() => {
           cardDeleteModal.setLoading(false, "Yes");
         });
+      });
       cardDeleteModal.open(data._id);
     },
-    function handleCardLike(data) {
-      api.changeLikeCardStatus(data._id, newCard.isLiked())
+    function handlelikeClick(data) {
+      api.likeCard(data._id, newCard.isLiked())
       .then((res) => {
         const likes = res.likes || [];
-        newCard.setLikes(likes);
+        newCard.likeCounter(likes);
         newCard.toggleLikes();
       })
       .catch((err) => {

@@ -43,7 +43,7 @@ export default class Api {
 
   likeCard(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: isLiked ? "PUT" : "DELETE",
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then((res) => {
       return this._checkServerResponse(res);
