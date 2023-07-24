@@ -83,8 +83,15 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     cardListSection = new Section(
       {
         items: initialCards,
-        renderer: ({ name, link, likes, _id, userId }) => {
-          const newCard = createCard({ name, link, likes, _id, userId });
+        renderer: ({ name, link, likes, _id, userId, owner }) => {
+          const newCard = createCard({
+            name,
+            link,
+            likes,
+            _id,
+            userId,
+            ownerId: owner._id,
+          });
           cardListSection.addItem(newCard);
         },
       },
@@ -165,32 +172,33 @@ function createCard(data) {
     },
     function handleDeleteClick() {
       cardDeleteModal.setSubmitAction(() => {
-      cardDeleteModal.setLoading(true);
-      api
-        .deleteCard(data._id)
-        .then((res) => {
-          newCard.remove(res._id);
-          cardDeleteModal.close();
-        })
-        .catch((err) => {
-          console.error(err);
-        })
-        .finally(() => {
-          cardDeleteModal.setLoading(false, "Yes");
-        });
+        cardDeleteModal.setLoading(true);
+        api
+          .deleteCard(data._id)
+          .then((res) => {
+            newCard.remove(res._id);
+            cardDeleteModal.close();
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+          .finally(() => {
+            cardDeleteModal.setLoading(false, "Yes");
+          });
       });
       cardDeleteModal.open(data._id);
     },
     function handlelikeClick(data) {
-      api.likeCard(data._id, newCard.isLiked())
-      .then((res) => {
-        const likes = res.likes || [];
-        newCard.likeCounter(likes);
-        newCard.toggleLikes();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      api
+        .likeCard(data._id, newCard.isLiked())
+        .then((res) => {
+          const likes = res.likes || [];
+          newCard.likeCounter(likes);
+          newCard.toggleLikes();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   );
   return newCard.getView();
