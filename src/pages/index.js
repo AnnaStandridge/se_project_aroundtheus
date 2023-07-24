@@ -193,8 +193,8 @@ function createCard(data) {
         .likeCard(data._id, newCard.isLiked())
         .then((res) => {
           const likes = res.likes || [];
-          newCard.likeCounter(likes);
-          newCard.toggleLikes();
+          newCard.setLikes(likes);
+          newCard._renderLikes();
         })
         .catch((err) => {
           console.error(err);
