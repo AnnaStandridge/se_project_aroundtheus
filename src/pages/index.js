@@ -194,7 +194,6 @@ function createCard(data) {
         .then((res) => {
           const likes = res.likes || [];
           newCard.setLikes(likes);
-          newCard._renderLikes();
         })
         .catch((err) => {
           console.error(err);

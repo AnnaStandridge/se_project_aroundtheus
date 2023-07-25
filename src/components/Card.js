@@ -11,7 +11,7 @@ export default class Card {
     this._link = link;
     this._likes = likes;
     this._id = _id;
-    this._myId - myId;
+    this._myId = myId;
     this._userId = userId;
     this._ownerId = ownerId;
     this._cardSelector = cardSelector;
@@ -49,11 +49,11 @@ export default class Card {
     if (this.isLiked()) {
       this._cardElement
         .querySelector(".card__like-button")
-        .classList.add(".card__like-button_active");
+        .classList.add("card__like-button_active");
     } else {
       this._cardElement
         .querySelector(".card__like-button")
-        .classList.remove(".card__like-button_active");
+        .classList.remove("card__like-button_active");
     }
   }
 
@@ -84,7 +84,6 @@ export default class Card {
 
   _handleLikeIcon() {
     this._handleLikeClick({ _id: this._id, likes: this._likes });
-    this._renderLikes();
   }
 
   remove() {
