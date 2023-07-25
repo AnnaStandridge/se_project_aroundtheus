@@ -4,6 +4,15 @@
   padding-top: 40px;
 }
 
+.profile__image_container {
+  position: relative;
+  margin: 0 30px 0 0;
+}
+
+.profile__image_container:hover {
+  opacity: 0.6;
+}
+
 .profile__image {
   height: 120px;
   width: 120px;
@@ -11,6 +20,27 @@
   object-fit: cover;
   background-position: center;
   margin-right: 24px;
+}
+
+.profile__image-edit-button {
+  background: transparent url(../images/edit-icon.svg) center no-repeat;
+  height: 120px;
+  width: 120px;
+  align-self: center;
+  border: 0px solid white;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  bottom: 4%;
+  right: 17%;
+  z-index: 1;
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.profile__image-edit-button:hover {
+  opacity: 0.7;
 }
 
 .profile__info {
